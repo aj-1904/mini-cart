@@ -14,7 +14,18 @@ class CartItem extends React.Component {
   
   //Use arrow function for binding the instance of this to the class CartItem 
   increaseQuantity = () => {
-      console.log('this', this.state);
+    //   console.log('this', this.state);
+    //   setState form 1
+    //   this.setState({
+    //       qty: this.state.qty + 1
+    //   })
+
+      //setState form 2 - if prevState required use this
+      this.setState ((prevState) => {
+        return {
+            qty: prevState.qty + 1
+        }
+      })
   }
   render() {
     const { price, title, qty } = this.state;
@@ -26,8 +37,8 @@ class CartItem extends React.Component {
 
         <div className="right-block">
           <div style={{ fontSize: 25 }}>{title}</div>
-          <div style={{ color: "#777" }}>{price}</div>
-          <div style={{ color: "#777" }}>{qty}</div>
+          <div style={{ color: "#777" }}>Rs {price}</div>
+          <div style={{ color: "#777" }}>Qty: {qty}</div>
 
           <div className="cart-item-actions">
             {/* Buttons */}
