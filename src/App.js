@@ -1,9 +1,10 @@
-import CartItem from "./cartItem";
+
+import Cart from "./Cart";
 
 function App() {
   return (
     <div className="App">
-      <CartItem />
+      <Cart />
     </div>
   );
 }
