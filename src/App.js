@@ -11,27 +11,25 @@ class App extends React.Component {
           price: 999,
           title: "Watch",
           qty: 1,
-          img: "",
+          img: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2F0Y2h8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60",
           id: 1,
         },
         {
           price: 9999,
           title: "Mobile Phone",
           qty: 1,
-          img: "",
+          img: "https://images.unsplash.com/photo-1567581935884-3349723552ca?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bW9iaWxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60",
           id: 2,
         },
         {
           price: 19999,
           title: "Laptop",
           qty: 1,
-          img: "",
+          img: "https://images.unsplash.com/photo-1515343480029-43cdfe6b6aae?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGxhcHRvcHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60",
           id: 3,
         },
       ],
     };
-    // this.increaseQuantity = this.increaseQuantity.bind(this);
-    // this.testing();
   }
   handleIncreaseQuantity = (product) => {
     console.log("Hey please increase the qty of ", product);
@@ -82,6 +80,17 @@ class App extends React.Component {
     return count;
   }
 
+  getCartTotal = () => {
+    const { products } = this.state;
+
+    let cartTotal = 0;
+
+    products.map((product) => {
+      cartTotal += product.qty * product.price;
+    })
+    return cartTotal;
+  }
+
   render() {
     const { products } = this.state
     return (
@@ -93,6 +102,7 @@ class App extends React.Component {
           onDecreaseQuantity={this.handleDecreaseQuantity}
           onDeleteProduct={this.handleDeleteProduct}
         />
+        <div style={{padding: 10, fontSize: 20}}>TOTAL: {this.getCartTotal()}</div>
       </div>
     );
   }
