@@ -1,10 +1,15 @@
 import React from "react";
-import CartItem from "./cartItem";
+import CartItem from "./CartItem";
 
 class Cart extends React.Component {
     render () {
+        const arr = [1, 2, 3, 4, 5]
         return (
            <div className="cart">
+               {/* Rendering list of items */}
+               {arr.map((item) => {
+                   return item + 5
+               })}
                <CartItem />
                <CartItem />
                <CartItem />
