@@ -75,10 +75,10 @@ class App extends React.Component {
 
     products.forEach((product) => {
       count += product.qty;
-    })
+    });
 
     return count;
-  }
+  };
 
   getCartTotal = () => {
     const { products } = this.state;
@@ -86,23 +86,28 @@ class App extends React.Component {
     let cartTotal = 0;
 
     products.map((product) => {
-      cartTotal += product.qty * product.price;
-    })
+      if (product.qty > 0) {
+        cartTotal += product.qty * product.price;
+      }
+      return "";
+    });
     return cartTotal;
-  }
+  };
 
   render() {
-    const { products } = this.state
+    const { products } = this.state;
     return (
       <div className="App">
-        <Navbar count={this.getCartCount()}/>
-        <Cart 
+        <Navbar count={this.getCartCount()} />
+        <Cart
           products={products}
           onIncreaseQuantity={this.handleIncreaseQuantity}
           onDecreaseQuantity={this.handleDecreaseQuantity}
           onDeleteProduct={this.handleDeleteProduct}
         />
-        <div style={{padding: 10, fontSize: 20}}>TOTAL: {this.getCartTotal()}</div>
+        <div style={{ padding: 10, fontSize: 20 }}>
+          TOTAL: {this.getCartTotal()}
+        </div>
       </div>
     );
   }
